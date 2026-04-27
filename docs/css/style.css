@@ -22,6 +22,17 @@ body {
   line-height: 1.6;
   color: var(--text);
   background-color: var(--cream);
+  transition: direction 0.3s ease;
+}
+
+body[dir="rtl"] {
+  direction: rtl;
+  text-align: right;
+}
+
+body[dir="ltr"] {
+  direction: ltr;
+  text-align: left;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -67,6 +78,36 @@ nav.solid {
   font-size: 1.5rem;
   font-weight: 600;
   color: var(--navy);
+}
+
+.nav-controls {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.language-toggle {
+  background: var(--gold);
+  color: var(--navy);
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+  box-shadow: 0 2px 8px rgba(184, 150, 90, 0.3);
+}
+
+.language-toggle:hover {
+  background: var(--gold-light);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(184, 150, 90, 0.4);
+}
+
+.language-toggle:active {
+  transform: translateY(0);
 }
 
 .nav-links {
@@ -460,8 +501,57 @@ footer p {
   transform: translateY(0);
 }
 
+/* RTL Support */
+body[dir="rtl"] .nav-links {
+  flex-direction: row-reverse;
+}
+
+body[dir="rtl"] .logo {
+  order: 2;
+}
+
+body[dir="rtl"] .nav-controls {
+  order: 1;
+}
+
+body[dir="rtl"] .hamburger {
+  margin-left: 0;
+  margin-right: auto;
+}
+
+body[dir="rtl"] .why-list li {
+  padding-right: 2rem;
+  padding-left: 0;
+}
+
+body[dir="rtl"] .why-list li::before {
+  right: 0;
+  left: auto;
+}
+
+body[dir="rtl"] .service-list {
+  text-align: right;
+}
+
+body[dir="rtl"] .hero-pills {
+  flex-direction: row;
+}
+
+body[dir="rtl"] section:nth-child(even) {
+  text-align: right;
+}
+
 /* Mobile Styles */
 @media (max-width: 900px) {
+  .nav-controls {
+    gap: 0.5rem;
+  }
+
+  .language-toggle {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.8rem;
+  }
+
   .nav-links {
     position: fixed;
     top: 80px;
@@ -474,6 +564,16 @@ footer p {
     align-items: center;
     transform: translateX(-100%);
     transition: transform 0.3s ease;
+  }
+
+  body[dir="rtl"] .nav-links {
+    left: auto;
+    right: 0;
+    transform: translateX(100%);
+  }
+
+  body[dir="rtl"] .nav-links.open {
+    transform: translateX(0);
   }
 
   .nav-links.open {
