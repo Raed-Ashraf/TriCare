@@ -533,12 +533,20 @@ body[dir="rtl"] .service-list {
   text-align: right;
 }
 
-body[dir="rtl"] .hero-pills {
-  flex-direction: row;
-}
-
 body[dir="rtl"] section:nth-child(even) {
   text-align: right;
+}
+
+..contact-item {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.contact-item:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.12);
 }
 
 /* Mobile Styles */
